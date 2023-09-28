@@ -41,7 +41,7 @@ class Universo(tkinter.Tk):
 		'''
 		tkinter.Tk.__init__(self)
 		self.wm_title("Meu Universo")
-		self.Background = tkinter.Canvas(self, bg = 'black', height = 1200, width = 1200)
+		self.Background = tkinter.Canvas(self, bg = 'black', height = 1000, width = 1000)
 
 		self.Background.pack()
 
@@ -71,8 +71,8 @@ class Universo(tkinter.Tk):
 		for i in self.Lista_Corpos:
 			self.S = 10
 			xscale = 200
-			xmm    = i.R[0]*xscale-self.S*i.Raio + 600
-			xMM    = i.R[0]*xscale+self.S*i.Raio + 600
+			xmm    = i.R[0]*xscale-self.S*i.Raio + 500
+			xMM    = i.R[0]*xscale+self.S*i.Raio + 500
 
 			ymm    = i.R[1]*xscale-self.S*i.Raio + 500
 			yMM    = i.R[1]*xscale+self.S*i.Raio + 500
