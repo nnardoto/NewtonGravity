@@ -1,5 +1,5 @@
 import numpy as np
-import tkinter
+import tkinter as tk
 
 
 class CorpoCeleste:
@@ -20,7 +20,7 @@ class CorpoCeleste:
 		self.R     = np.array(R)
 		self.dR    = np.array(dR)
 
-class Universo(tkinter.Tk):
+class Universo(tk.Tk):
 	'''
 	Gerencia as propriedades gerais do universo, bem como as interações entre os corpos celestes inseridos nele
 	'''
@@ -39,12 +39,43 @@ class Universo(tkinter.Tk):
 		'''
 		Inicializador da classe Universo, Define o Background,  
 		'''
-		tkinter.Tk.__init__(self)
+		tk.Tk.__init__(self)
 		self.wm_title("Meu Universo")
-		self.Background = tkinter.Canvas(self, bg = 'black', height = 1000, width = 1000)
-
+		self.Background = tk.Canvas(self, bg = 'black', height = 700, width = 700)
 		self.Background.pack()
+		
+		# Janela de Opções
+		self.new_massa = tk.Label(self, text="Massa")
+		self.entry_massa = tk.Entry()
+		self.new_color = tk.Label(self, text="Cor")
+		self.entry_color = tk.Entry()
+		self.new_x = tk.Label(self, text="X")
+		self.entry_x = tk.Entry()
+		self.new_y = tk.Label(self, text="Y")
+		self.entry_y = tk.Entry()
+		self.new_vx = tk.Label(self, text="Vx")
+		self.entry_vx = tk.Entry()
+		self.new_vy = tk.Label(self, text="Vy")
+		self.entry_vy = tk.Entry()
+		self.botao_criar = tk.Button(self, text="Gerar corpo", command=self.add_corpo)
 
+		self.new_massa.pack()
+		self.entry_massa.pack()
+		self.new_color.pack()
+		self.entry_color.pack()
+		self.new_x.pack()
+		self.entry_x.pack()
+		self.new_y.pack()
+		self.entry_y.pack()
+		self.new_vx.pack()
+		self.entry_vx.pack()
+		self.new_vy.pack()
+		self.entry_vy.pack()
+		self.botao_criar.pack()
+
+	def add_corpo(self):
+		self.Lista_Corpos.append(CorpoCeleste("Novo_corpo", self.entry_color.get(), 1, int(self.entry_massa.get()), [float(self.entry_x.get()), float(self.entry_y.get())], [float(self.entry_vx.get()), float(self.entry_vy.get())]))
+		print("Particula criada!")
 
 	def Start(self):
 		'''
@@ -138,3 +169,4 @@ class Universo(tkinter.Tk):
 		'''
 		for corpo in self.Lista_Corpos:
 			print(corpo.Nome)
+
